@@ -1,19 +1,12 @@
 "use client"
 import { useState } from "react";
-import Image from "next/image"
+import Image from "next/image";
 import styles from "./nav.module.css";
+import links from "@/api/data";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const links = [
-    "projects",
-    "booking",
-    "gallery events",
-    "blog",
-    "information"
-  ]
-  
   return (
     isOpen?
     <div className={styles.open}>

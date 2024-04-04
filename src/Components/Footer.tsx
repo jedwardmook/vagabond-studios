@@ -13,15 +13,15 @@ export default function Footer () {
 
 
 	useEffect(() => {
-        const handleScroll = () => {
-            const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-            setIsAtBottom(atBottom);
-        };
+    const handleScroll = () => {
+        const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+        setIsAtBottom(atBottom);
+    };
 
-        window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 	return (
 		// <footer className={`${styles['footer-container']} ${isAtBottom ? styles.unblurred : ''}`}>

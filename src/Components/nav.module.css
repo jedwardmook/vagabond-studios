@@ -1,48 +1,70 @@
 .open {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -86%;
   display: flex;
   height: 100vh;
-  z-index: 1;
+  z-index: 2;
+  width: 92%;
+  overflow-x: hidden;
+  transition: left 0.5s;
+}
+
+.expanded {
+  left: 0;
 }
 
 .navigation-container {
   background-color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 80vw;
-  padding: 1rem;
-}
-
-.heading {
+  width: 86vw;
   color: white;
 }
 
+.navigation-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 7vw;
+  height: 100vh;
+}
+
+.heading {
+  margin-top: 1rem;
+}
+
 .nav-link-list {
-  margin-left: -2.5rem;
+  margin-top: 1.75rem;
+  margin-left: -2.75rem;
+  margin-bottom: 11rem;
 }
 
 .nav-link {
   color: white;
-  font-size: 6vw;
+  font-size: 4.75rem;
   list-style-type: none;
   cursor: pointer;
-  transition: filter 0.3 ease;
+  transition: filter 0.1 ease;
+  text-decoration: none;
+}
+
+.link-list {
+  margin-bottom: -1rem;
 }
 
 .nav-link-list:hover .nav-link {
-  filter: blur(6px);
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
 
 .nav-link-list .nav-link:hover {
-  filter: blur(0px)
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
 }
 
 .studio-info-container {
   display: flex;
   gap: 5vw;
+  margin-bottom: .5rem;
 }
 
 .studio-info {
@@ -51,7 +73,7 @@
 }
 
 .close-container {
-  width: 35px;
+  width: 50px;
   background-color: #cc6633;
   display: flex;
   flex-direction: column;
@@ -60,37 +82,40 @@
   height: 100vh;
 }
 
+.open-container {
+  width: 50px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 .close-button {
+  margin-top: 20px;
   width: 35px;
   appearance: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
 
-.closed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: black;
+  .close-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: -5px;
+  }
+
+  .menu {
   width: 35px;
-  height: 100vh;
-  cursor: pointer;
-  z-index: 1;
+  height: 35px;
+  margin-left: -5px;
+  margin-top: -3px;
 }
-
-.menu {
-  width: 30px;
-  height: 30px;
-  margin-top: 20px;
 }
 
 .vs {
-  width: 25px;
+  width: 30px;
   height: 30px;
   margin-bottom: 20px;
 }

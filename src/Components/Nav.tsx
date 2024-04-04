@@ -2,41 +2,44 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./nav.module.css";
-import links from "@/api/data";
+import { links } from "@/api/data";
 
 export default function Nav() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [expanded, setExpanded] = useState(false)
 
   return (
-    isOpen?
-    <div className={styles.open}>
+    <div className={`${styles.open} ${expanded ? styles.expanded : ''}`}>
       <div className={styles['navigation-container']}>
-        <p className={styles.heading}>VAGABOND STUDIOS · BEAUTIFUL CONCRETE DAYLIGHT WITH LARGE WINDOWS IN THE HEART OF LONG ISLAND CITY</p>
-        <ul className={styles['nav-link-list']}>
-          {links.map((link) => {
-            return (
-            <a key={link}><li className={styles['nav-link']}>{link.toUpperCase()}</li></a>
-            )
-          })}
-        </ul>
-        <div className={styles['studio-info-container']}>
-          <div>
-            <p className={styles['studio-info']}>MONDAY - SUNDAY</p>
-            <p className={styles['studio-info']}>ALL DAY</p>
-          </div>
-          <div>
-            <p className={styles['studio-info']}>37-24 24TH ST.</p>
-            <p className={styles['studio-info']}>LONG ISLAND CITY, NY 11101</p>
+        <div className={styles['navigation-text']}>
+          <p className={styles.heading}>VAGABOND STUDIOS · BEAUTIFUL CONCRETE DAYLIGHT WITH LARGE WINDOWS IN THE HEART OF LONG ISLAND CITY</p>
+          <ul className={styles['nav-link-list']}>
+            {links.map((link) => {
+              return (
+              <a key={link} href="projects" className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
+              )
+            })}
+          </ul>
+          <div className={styles['studio-info-container']}>
+            <div>
+              <p className={styles['studio-info']}>MONDAY - SUNDAY</p>
+              <p className={styles['studio-info']}>ALL DAY</p>
+            </div>
+            <div>
+              <p className={styles['studio-info']}>37-24 24TH ST.</p>
+              <p className={styles['studio-info']}>LONG ISLAND CITY, NY 11101</p>
+            </div>
           </div>
         </div>
       </div>
+      {expanded?
       <div className={styles['close-container']}>
-        <button className={styles['close-button']} onClick={() => setIsOpen(!isOpen)}>
+        <button className={styles['close-button']} onClick={() => setExpanded(!expanded)}>
           <Image
             src={`close.svg`}
             alt="close"
-            width={25}
-            height={45}
+            width={0}
+            height={0}
+            className={styles['close-icon']}
           />
         </button>
         <Image
@@ -47,17 +50,17 @@ export default function Nav() {
             className={styles.vs}
           />
       </div>
-    </div>
-    :
-    <button onClick={() => setIsOpen(!isOpen)}>
-      <div className={styles.closed}>
+      :
+      <div className={styles['open-container']}>
+        <button className={styles['close-button']} onClick={() => setExpanded(!expanded)}>
         <Image
           src={`menu.svg`}
           alt="menu"
-          width={30}
-          height={30}
+          width={0}
+          height={0}
           className={styles.menu}
         />
+        </button>
         <Image
           src={`vs.svg`}
           alt="Vagabond Studios"
@@ -66,6 +69,7 @@ export default function Nav() {
           className={styles.vs}
         />
       </div>
-    </button>
+      }
+    </div>
     )
 }

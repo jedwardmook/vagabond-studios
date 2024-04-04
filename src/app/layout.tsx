@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/Components/Header";
 import Nav from "@/Components/Nav"
 import Footer from "@/Components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const generalSans = localFont({src: '../../public/fonts/GeneralSans-Regular.otf'})
 
 export const metadata: Metadata = {
   title: "Vagabond Studios",
@@ -19,11 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={generalSans.className}>
         <Nav />
         <Header />
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );

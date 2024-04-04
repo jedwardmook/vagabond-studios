@@ -8,8 +8,8 @@ export default function Header() {
           <Image
             src={`WORDMARK_BLACK.svg`}
             alt="Vagabond Studios"
-            width={225}
-            height={25}
+            width={0}
+            height={0}
             className={styles.logo}
           />
         </a>

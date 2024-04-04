@@ -1,0 +1,46 @@
+.projects-main {
+  background-image: linear-gradient(white, rgba(255, 255, 255, 0));
+  height: 100vh;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  padding-left: 6vw;
+}
+
+.projects-container:hover .project-container {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+.projects-container .project-container:hover {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+}
+
+.project-container {
+  display: flex;
+  align-items: center;
+  padding: .5rem 0;
+  border-bottom: 1px solid black;
+  gap: 3rem;
+}
+
+.project-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.display-image-container {
+  position: absolute;
+  top: 6rem;
+  right: 5rem;
+  z-index: 1;
+}
+
+.display-image {
+  width: 25rem;
+  height: auto;
+}

@@ -1,11 +1,36 @@
+'use client'
 import Image from 'next/image'
 import styles from './footer.module.css'
-import links from '@/api/data'
+import { usePathname } from "next/navigation";
+import { links } from '@/api/data'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Footer () {
+	const [isAtBottom, setIsAtBottom] = useState(false)
+
+	const pathname = usePathname()
+
+
+	useEffect(() => {
+        const handleScroll = () => {
+            const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+            setIsAtBottom(atBottom);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
 	return (
-		<footer className={styles['footer-container']}>
+		// <footer className={`${styles['footer-container']} ${isAtBottom ? styles.unblurred : ''}`}>
+		<footer 
+			className={
+				pathname === "/" 
+				? `${styles['footer-home-container']} ${isAtBottom ? styles.unblurred : ''}`
+				: styles['footer-container']
+			}>
 			<div className={styles['footer-info']}>
 				<div className={styles['hours-address-container']}>
 					<div>
@@ -25,7 +50,7 @@ export default function Footer () {
 					instead of having project by project.</p>
 				</div>
 			</div>
-			<div>
+			<div className={styles['footer-logo-container']}>
 				<Image
 					src={`WORDMARK_BLACK.svg`}
 					alt="Vagabond Studios"
@@ -39,7 +64,7 @@ export default function Footer () {
 					return (
 						<Link 
 							key={link} 
-							href={`#${link}`}
+							href={`/${link}`}
 							className={styles['footer-link']}
 							>{link.toUpperCase()}
 						</Link>

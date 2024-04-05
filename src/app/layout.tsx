@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
 	children,
 }: Readonly<{
+	// eslint-disable-next-line no-undef
 	children: React.ReactNode;
 }>) {
 	return (

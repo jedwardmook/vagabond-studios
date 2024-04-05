@@ -22,6 +22,7 @@ export default function Footer () {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
+
 	return (
 		<footer
 			className={pathname === "/"

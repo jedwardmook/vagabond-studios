@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import { links } from '@/api/data';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import useIsAdminRoute from "../app/utils/routeUtils";
 
 export default function Footer () {
 	const [isAtBottom, setIsAtBottom] = useState(false);
-
+	const isAdminRoute = useIsAdminRoute();
 	const pathname = usePathname();
 
 	useEffect(() => {
@@ -24,6 +25,7 @@ export default function Footer () {
 
 
 	return (
+		!isAdminRoute &&
 		<footer
 			className={pathname === "/"
 				? `${styles['footer-home-container']} ${isAtBottom ? styles.unblurred : ''}`

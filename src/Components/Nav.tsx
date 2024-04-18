@@ -3,11 +3,15 @@ import { useState } from "react";
 import Image from "next/image";
 import styles from "./nav.module.css";
 import { links } from "@/api/data";
+import useIsAdminRoute from "../app/utils/routeUtils";
 
 export default function Nav() {
 	const [expanded, setExpanded] = useState(false);
+	const isAdminRoute = useIsAdminRoute();
+
 
 	return (
+		!isAdminRoute &&
 		<div className={`${styles.open} ${expanded ? styles.expanded : ''}`}>
 			<div className={styles['navigation-container']}>
 				<div className={styles['navigation-text']}>

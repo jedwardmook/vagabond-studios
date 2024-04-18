@@ -18,6 +18,7 @@
 .projects-container .project-container:hover {
   filter: blur(0px);
   -webkit-filter: blur(0px);
+  cursor: pointer;
 }
 
 .project-container {

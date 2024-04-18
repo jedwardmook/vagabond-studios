@@ -2,13 +2,27 @@
 import styles from "./projects.module.css";
 import { projects } from "@/api/data";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+type Project = {
+	projectName: string;
+  projectYear: string;
+  projectArtist: string;
+  projectImage: StaticImageData;
+}
+
 export default function Projects() {
-	const [displayImage, setDisplayImage] = useState(projects[0].projectImage);
+	const [displayImage, setDisplayImage] = useState<StaticImageData>(projects[0].projectImage);
+
+	const router = useRouter();
 
 	const handleMouseEnter = (image: StaticImageData) => {
 		setDisplayImage(image);
+	};
+
+	const handleClick = (project: Project) => {
+		router.push(`/projects/${project.projectName.replace(" ","-")}`);
 	};
 
 	return (
@@ -29,6 +43,7 @@ export default function Projects() {
 							className={styles['project-container']}
 							onMouseEnter={() => handleMouseEnter(project.projectImage)}
 							key={project.projectName}
+							onClick={() => handleClick(project)}
 						>
 							<div className={styles['project-title']}>
 								{project.projectName.toUpperCase()}
@@ -52,4 +67,4 @@ export default function Projects() {
 			</div>
 		</main>
 	);
-}
+};

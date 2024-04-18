@@ -15,15 +15,15 @@ type Project = {
 export default function Projects() {
 	const [displayImage, setDisplayImage] = useState<StaticImageData>(projects[0].projectImage);
 
-	const router = useRouter()
+	const router = useRouter();
 
 	const handleMouseEnter = (image: StaticImageData) => {
 		setDisplayImage(image);
 	};
 
 	const handleClick = (project: Project) => {
-		router.push(`/projects/${project.projectName.replace(" ","-")}`)
-	}
+		router.push(`/projects/${project.projectName.replace(" ","-")}`);
+	};
 
 	return (
 		<main className={styles['projects-main']}>
@@ -66,5 +66,5 @@ export default function Projects() {
 				})}
 			</div>
 		</main>
-	)
-}
+	);
+};

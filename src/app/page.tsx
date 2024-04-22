@@ -3,10 +3,20 @@ import { projects } from "@/api/data";
 import Image from "next/image";
 import { getProjects } from "../../sanity/sanity-utils";
 
+type Image = {
+	url: string
+}
+
+type Project = {
+	title: string,
+	year: string,
+	images: Image[],
+}
+
 export default async function Home() {
 	const sanityProjects = await getProjects();
 
-	const sanityProjectsToDisplay = sanityProjects.map((project, index) => {
+	const sanityProjectsToDisplay = sanityProjects.map((project: Project) => {
 		return (
 			<figure key={project.title} className={styles['project-one-container']}>
 				<Image

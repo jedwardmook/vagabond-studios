@@ -18,6 +18,10 @@ export const projectType = defineType({
 			type: 'string'
 		}),
 		defineField({
+			name: 'description',
+			type: 'string'
+		}),
+		defineField({
 			name: 'mediums',
 			type: 'array',
 			of: [

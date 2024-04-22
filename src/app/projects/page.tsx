@@ -7,9 +7,9 @@ import { useState } from "react";
 
 type Project = {
 	projectName: string;
-  projectYear: string;
-  projectArtist: string;
-  projectImage: StaticImageData;
+	projectYear: string;
+	projectArtist: string;
+	projectImage: StaticImageData;
 }
 
 export default function Projects() {

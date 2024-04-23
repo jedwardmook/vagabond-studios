@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/Components/Header";
 import Nav from "@/Components/Nav";
 import Footer from "@/Components/Footer";
+import { ProjectsProvider } from "./context/projectsContext";
 
 const generalSans = localFont({src: '../../public/fonts/GeneralSans-Regular.otf'});
 
@@ -20,10 +21,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={generalSans.className}>
+			<ProjectsProvider>
 				<Nav />
 				<Header />
 				{children}
 				<Footer/>
+			</ProjectsProvider>
 			</body>
 		</html>
 	);

@@ -4,7 +4,6 @@
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "semi": "error",
-    "indent": ["error", "tab"],
     "no-trailing-spaces": "error",
     "space-before-blocks": "error",
     "space-infix-ops": "error",

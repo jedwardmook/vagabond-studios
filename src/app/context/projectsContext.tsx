@@ -1,5 +1,5 @@
 'use client';
-import {createContext, useState, useEffect } from 'react';
+import {createContext, useState, useEffect, useCallback } from 'react';
 import { createClient, groq } from 'next-sanity';
 import { projectId, dataset, apiVersion } from '../../../sanity/env';
 
@@ -35,27 +35,27 @@ export const ProjectsProvider = ({ children } : {children: React.ReactNode}) => 
         apiVersion,
     });
 
-    const fetchProjects = async () => {
+    const fetchProjects = useCallback(async () => {
         const query = groq`*[_type == 'project']{
-			_id,
-			_createdAt,
-			title,
-			artist,
-			year,
-			mediums,
-			images[] {
-				"url": asset->url
-			},
-			description
-		}`;
+          _id,
+          _createdAt,
+          title,
+          artist,
+          year,
+          mediums,
+          images[] {
+            "url": asset->url
+          },
+          description
+        }`;
 
         const data = await client.fetch(query);
         setProjects(data);
-    };
+      }, [client]);
 
     useEffect(() => {
         fetchProjects();
-    });
+    },[fetchProjects]);
 
     return (
         <ProjectsContext.Provider value={{projects, fetchProjects}}>

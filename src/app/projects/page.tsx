@@ -10,9 +10,9 @@ type Image = {
 }
 
 type Project = {
+  artist: string,
   title: string,
   year: string,
-  artist: string,
   images: Image[],
   mediums: string[],
 }
@@ -52,7 +52,7 @@ export default function Projects() {
         />
       </div>
       <div className={styles['projects-container']}>
-        {projects.map((project) => {
+        {projects.map(project => {
           return (
             <div
               className={styles['project-container']}

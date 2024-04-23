@@ -9,7 +9,9 @@ type Image = {
 
 type Project = {
     title: string,
+    artist: string,
     year: string,
+    mediums: string[],
     images: Image[],
     description: string,
   };

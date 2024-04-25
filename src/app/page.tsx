@@ -1,8 +1,7 @@
 'use client';
 import styles from "./page.module.css";
-import { projects } from "@/api/data";
 import Image from "next/image";
-import { getProjects } from "../../sanity/sanity-utils";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import ProjectsContext from "./context/projectsContext";
 
@@ -18,10 +17,19 @@ type Project = {
 
 export default function Home() {
   const { projects } = useContext(ProjectsContext);
+  const router = useRouter();
+
+  const handleClick = (project: Project) => {
+    router.push(`/projects/${project.title.toLowerCase().replace(" ","-")}`);
+  };
 
   const projectsToDisplay = projects.map((project: Project) => {
     return (
-      <figure key={project.title} className={styles['project-one-container']}>
+      <figure
+        key={project.title}
+        className={styles['project-one-container']}
+        onClick={() => handleClick(project)}
+      >
         <Image
           src={project.images[0].url}
           alt={project.title}

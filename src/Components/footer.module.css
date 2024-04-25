@@ -1,19 +1,22 @@
 .footer-home-container {
   display: fixed;
-	position: fixed;
+  position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100vw;
   margin-left: 6vw;
 	filter: blur(8px);
   -webkit-filter: blur(8px);
+  opacity: .2;
   transition: filter 0.3s;
+  transform: opacity 0.8s;
 	z-index: -1;
 }
 
 .unblurred {
 	filter: none;
   -webkit-filter: none;
+  opacity: 1;
 }
 
 .footer-container {

@@ -6,7 +6,7 @@ export async function getProjects() {
 	const client = createClient({
 		projectId,
 		dataset,
-		apiVersion
+		apiVersion,
 	});
 
 	return client.fetch(

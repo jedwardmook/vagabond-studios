@@ -1,0 +1,38 @@
+.project-main {
+  height: 100vh;
+}
+
+.project-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 4rem;
+}
+
+.project-info {
+  margin: 0;
+}
+
+.project-title {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.project-artist {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.project-mediums {
+  margin: 0;
+  margin-bottom: 3rem;
+}
+
+.project-description {
+  font-size: .75rem;
+}
+
+.project-image {
+  width: 450px;
+  height: auto;
+}

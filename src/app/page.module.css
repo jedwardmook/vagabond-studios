@@ -13,6 +13,7 @@
   align-items: flex-start;
   gap: 10px;
   margin-right: -15px;
+  cursor: pointer;
 }
 
 .project-one-image {

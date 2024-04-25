@@ -17,7 +17,7 @@ type Project = {
 
 export default function Home() {
   const { projects } = useContext(ProjectsContext);
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClick = (project: Project) => {
     router.push(`/projects/${project.title.toLowerCase().replace(" ","-")}`);

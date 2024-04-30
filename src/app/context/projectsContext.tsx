@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import {createContext, useState, useEffect, useCallback } from 'react';
 import { createClient, groq } from 'next-sanity';

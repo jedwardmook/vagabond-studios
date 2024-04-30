@@ -26,6 +26,7 @@
   align-items: center;
   padding: .5rem 0;
   border-bottom: 1px solid black;
+  width: 90vw;
   gap: 3rem;
 }
 
@@ -42,6 +43,6 @@
 }
 
 .display-image {
-  width: 25rem;
+  width: 35vw;
   height: auto;
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import ProjectsContext from "./context/projectsContext";
+import ProjectContainer from "@/Components/ProjectContainer";
 
 type Image = {
   url: string
@@ -19,31 +20,52 @@ export default function Home() {
   const { projects } = useContext(ProjectsContext);
   const router = useRouter();
 
-  const handleClick = (project: Project) => {
-    router.push(`/projects/${project.title.toLowerCase().replace(" ","-")}`);
+  const handleClick = (title: string) => {
+    router.push(`/projects/${title.toLowerCase().replace(" ","-")}`);
   };
 
-  const projectsToDisplay = projects.map((project: Project) => {
+  const projectsToDisplay = projects.slice(0,6).map((project: Project, index) => {
+    let figStyle = '';
+    let captionStyle='';
+    let imageStyle='';
+
+    if (index === 0){
+      imageStyle = 'project-one-image';
+      captionStyle = 'project-one-caption';
+      figStyle = 'project-one-container';
+    } else if (index === 1){
+      imageStyle = 'project-two-image';
+      captionStyle = 'project-two-caption';
+      figStyle = 'project-two-container';
+    } else if (index === 2) {
+      imageStyle = 'project-three-image';
+      captionStyle = 'project-three-caption';
+      figStyle = 'project-three-container';
+    } else if (index === 3) {
+      imageStyle = 'project-four-image';
+      captionStyle = 'project-four-caption';
+      figStyle = 'project-four-container';
+    } else if (index === 4) {
+      imageStyle = 'project-five-image';
+      captionStyle = 'project-five-caption';
+      figStyle = 'project-five-container';
+    } else if (index === 5) {
+      imageStyle = 'project-six-image';
+      captionStyle = 'project-six-caption';
+      figStyle = 'project-six-container';
+    }
+
     return (
-      <figure
+      <ProjectContainer
         key={project.title}
-        className={styles['project-one-container']}
-        onClick={() => handleClick(project)}
-      >
-        <Image
-          src={project.images[0].url}
-          alt={project.title}
-          width={1000}
-          height={1000}
-          className={styles['project-one-image']}
-          blurDataURL=""
-        />
-        <div>
-          <p className={styles['project-one-caption']}>
-            {project.title.toUpperCase()}, <em>{project.year.toUpperCase()}</em>
-          </p>
-        </div>
-      </figure>
+        title={project.title}
+        year={project.year}
+        images={project.images}
+        figStyle={figStyle}
+        captionStyle={captionStyle}
+        imageStyle={imageStyle}
+        handleClick={handleClick}
+      />
     );
   });
 

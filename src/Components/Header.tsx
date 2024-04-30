@@ -2,8 +2,6 @@
 import Image from "next/image";
 import styles from "./header.module.css";
 import useIsAdminRoute from "../app/utils/routeUtils";
-import { useContext } from "react";
-import ProjectsContext from "@/app/context/projectsContext";
 
 export default function Header() {
 	const isAdminRoute = useIsAdminRoute();

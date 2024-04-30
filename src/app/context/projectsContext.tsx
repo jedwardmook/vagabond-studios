@@ -37,7 +37,7 @@ export const ProjectsProvider = ({ children } : {children: React.ReactNode}) => 
   });
 
   const fetchProjects = useCallback(async () => {
-    const query = groq`*[_type == 'project']{
+    const query = groq`*[_type == 'project'] | order(_createdAt){
       _id,
       _createdAt,
       title,

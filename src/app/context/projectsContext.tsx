@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import {createContext, useState, useEffect, useCallback } from 'react';
 import { createClient, groq } from 'next-sanity';
@@ -37,7 +36,7 @@ export const ProjectsProvider = ({ children } : {children: React.ReactNode}) => 
   });
 
   const fetchProjects = useCallback(async () => {
-    const query = groq`*[_type == 'project']{
+    const query = groq`*[_type == 'project'] | order(_createdAt){
       _id,
       _createdAt,
       title,

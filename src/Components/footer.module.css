@@ -3,6 +3,7 @@
   position: fixed;
 	left: 0;
 	bottom: 0;
+  margin-bottom: 200px;
 	width: 100vw;
   margin-left: 6vw;
 	filter: blur(8px);

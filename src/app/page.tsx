@@ -26,14 +26,14 @@ export default function Home() {
 
   const projectsToDisplay = projects.slice(0,6).map((project: Project, index) => {
     let figStyle = '';
-    let captionStyle='';
-    let imageStyle='';
+    let captionStyle = '';
+    let imageStyle = '';
 
-    if (index === 0){
+    if (index === 0) {
       imageStyle = 'project-one-image';
       captionStyle = 'project-one-caption';
       figStyle = 'project-one-container';
-    } else if (index === 1){
+    } else if (index === 1) {
       imageStyle = 'project-two-image';
       captionStyle = 'project-two-caption';
       figStyle = 'project-two-container';

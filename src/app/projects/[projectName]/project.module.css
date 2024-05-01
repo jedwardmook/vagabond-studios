@@ -1,15 +1,21 @@
 .project-main {
-  height: 100vh;
+  /* display: flex; */
 }
 
 .project-container {
+  margin-top: 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 4rem;
+  grid-template-columns: repeat(4, 130px) 15px 15px repeat(4, 130px);
+  grid-template-rows: repeat(18, 120px);
+  justify-content: center;
 }
 
-.project-info {
-  margin: 0;
+.project-info-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 4;
+  grid-row: 1 / 4;
+  margin-bottom: 100px;
 }
 
 .project-title {
@@ -30,9 +36,69 @@
 
 .project-description {
   font-size: .75rem;
+  grid-column: 1 / 4;
 }
 
-.project-image {
+.project-image-1 {
   width: 450px;
   height: auto;
+  grid-column: 7 / 10;
+  grid-row: 1 / 4;
+}
+
+.project-image-2 {
+  width: 450px;
+  height: auto;
+  grid-column: 1 / 4;
+  grid-row: 5 / 8;
+}
+
+.project-image-3 {
+  width: 575px;
+  height: auto;
+  grid-column: 7 / 10;
+  grid-row: 6;
+}
+
+.project-image-4 {
+  width: 520px;
+  height: auto;
+  grid-column: 1 / 4;
+  grid-row: 10;
+}
+
+.project-image-5 {
+  width: 260px;
+  height: auto;
+  grid-column: 3 / 4;
+  grid-row: 16;
+}
+
+.project-image-6 {
+  width: 260px;
+  height: auto;
+  grid-column: 1 / 2;
+  grid-row: 16;
+}
+
+.project-image-7 {
+  width: 575px;
+  height: auto;
+  grid-column: 7 / 10;
+  grid-row: 12;
+  margin-top: 85px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 125px;
+  margin-left: 4rem;
+}
+
+.pagination-button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

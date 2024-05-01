@@ -56,30 +56,35 @@ export default function Project() {
 		fetchProject();
 	  }, [projectToSearch]);
 
-	  const projectsImages = project?.images?.map(image => {
+	  const projectsImages = project?.images?.map((image, index) => {
+      let className = `project-image-${index + 1}`;
+
 		return (
-			<div key={image.url}>
 				<Image
 				  src={image.url}
 				  alt="Image"
 				  width={1000}
 				  height={1000}
-				  className={styles['project-image']}
+				  className={styles[className]}
+          key={image.url}
 				/>
-			</div>
 		);
-	  });
+	});
 
 	return (
 		<main className={styles['project-main']}>
 			<div className={styles['project-container']}>
-				<div className={styles['project-info']}>
+				<div className={styles['project-info-container']}>
 					<h1 className={styles['project-title']}>{project?.title.toUpperCase()}</h1>
 					<h4 className={styles['project-artist']}><strong><em>{project?.artist}, {project?.year}</em></strong></h4>
 					<p className={styles['project-mediums']}>{project?.mediums.join(", ")}</p>
 					<p className={styles['project-description']}>{project?.description}</p>
 				</div>
 				{projectsImages}
+			</div>
+			<div className={styles['buttons-container']}>
+				<button className={styles['pagination-button']}>PREVIOUS PROJECT</button>
+				<button className={styles['pagination-button']}>NEXT PROJECT</button>
 			</div>
 		</main>
 	);

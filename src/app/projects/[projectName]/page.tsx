@@ -1,5 +1,5 @@
 'use client';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { projectId, dataset, apiVersion } from "../../../../sanity/env";
 import { createClient, groq } from "next-sanity";
@@ -21,7 +21,10 @@ type Project = {
 
 export default function Project() {
 	const [project, setProject] = useState<Project>();
+  const [prevProject, setPrevProject] = useState<Project>();
+  const [nextProject, setNextProject] = useState<Project>();
 	const pathName = usePathname();
+  const router = useRouter();
 	const path = pathName.split('/');
 	const projectToSearch = path[path.length - 1]
 		.replace('-',' ')
@@ -37,8 +40,6 @@ export default function Project() {
 			});
 
 			const query = groq`*[_type == 'project' && title == $title][0] {
-			  _id,
-			  _createdAt,
 			  title,
 			  artist,
 			  year,
@@ -47,17 +48,25 @@ export default function Project() {
 				"url": asset->url
 			  },
 			  description,
+        "prevProject": *[_type == "project" && _createdAt < ^._createdAt] | order(_createdAt desc) [0] {
+          title,
+        },
+        "nextProject": *[_type == "project" && _createdAt > ^._createdAt] | order(_createdAt asc) [0] {
+          title,
+        }
 			}`;
 
 			const data = await client.fetch(query, { title: projectToSearch });
 			setProject(data);
+      setNextProject(data.nextProject);
+      setPrevProject(data.prevProject);
 		  }
 		};
 		fetchProject();
-	  }, [projectToSearch]);
+	}, [projectToSearch]);
 
-	  const projectsImages = project?.images?.map((image, index) => {
-      let className = `project-image-${index + 1}`;
+	const projectsImages = project?.images?.map((image, index) => {
+    let className = `project-image-${index + 1}`;
 
 		return (
 				<Image
@@ -71,6 +80,14 @@ export default function Project() {
 		);
 	});
 
+  const handleNextProject = () => {
+    router.push(`/projects/${nextProject?.title?.toLowerCase().replace(" ","-")}`);
+  };
+
+  const handlePreviousProject = () => {
+    router.push(`/projects/${prevProject?.title?.toLowerCase().replace(" ","-")}`);
+  };
+
 	return (
 		<main className={styles['project-main']}>
 			<div className={styles['project-container']}>
@@ -83,8 +100,16 @@ export default function Project() {
 				{projectsImages}
 			</div>
 			<div className={styles['buttons-container']}>
-				<button className={styles['pagination-button']}>PREVIOUS PROJECT</button>
-				<button className={styles['pagination-button']}>NEXT PROJECT</button>
+				<button
+          className={styles['pagination-button']}
+          onClick={() => handlePreviousProject()}
+          disabled={prevProject === null}
+        >PREVIOUS PROJECT</button>
+				<button
+          className={styles['pagination-button']}
+          onClick={() => handleNextProject()}
+          disabled={nextProject === null}
+        >NEXT PROJECT</button>
 			</div>
 		</main>
 	);

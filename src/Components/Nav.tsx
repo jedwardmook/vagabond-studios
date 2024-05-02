@@ -65,13 +65,15 @@ export default function Nav() {
 							className={styles.menu}
 						/>
 					</button>
-					<Image
-						src={`vs.svg`}
-						alt="Vagabond Studios"
-						width={25}
-						height={60}
-						className={styles.vs}
-					/>
+          <a href="/">
+					  <Image
+						  src={`vs.svg`}
+						  alt="Vagabond Studios"
+						  width={25}
+						  height={60}
+						  className={styles.vs}
+					  />
+          </a>
 				</div>
 			}
 		</div>

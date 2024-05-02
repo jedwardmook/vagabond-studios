@@ -20,10 +20,10 @@ type Project = {
 }
 
 export default function Project() {
-	const [project, setProject] = useState<Project>();
+  const [project, setProject] = useState<Project>();
   const [prevProject, setPrevProject] = useState<Project>();
   const [nextProject, setNextProject] = useState<Project>();
-	const pathName = usePathname();
+  const pathName = usePathname();
   const router = useRouter();
 	const path = pathName.split('/');
 	const projectToSearch = path[path.length - 1]

@@ -24,3 +24,21 @@ export async function getProjects() {
 		}`
 	);
 }
+
+export async function getResidents() {
+	const client = createClient({
+		projectId,
+		dataset,
+		apiVersion,
+	});
+
+	return client.fetch(
+		groq`*[_type == 'resident']{
+			_id,
+			_createdAt,
+			name,
+			title,
+			contact
+		}`
+	);
+}

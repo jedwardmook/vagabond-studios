@@ -17,5 +17,11 @@ export const residentType = defineType({
       name: 'contact',
       type: 'string'
     })
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'title'
+    }
+  }
 });

@@ -1,10 +1,36 @@
 import styles from './information.module.css';
 import { shopInfo, ethos } from '@/api/data';
 import Image from 'next/image';
+import { getResidents } from '../../../sanity/sanity-utils';
 
-export default function Information() {
+type Resident = {
+  _id: string,
+  name: string,
+  title: string,
+  contact: string,
+}
+
+export default async function Information() {
+  let residents = [];
+
+  try {
+    residents = await getResidents();
+    } catch (error) {
+    console.error('Error:', error);
+  }
 
   const fullAddress = `${shopInfo.full_address.city}, ${shopInfo.full_address.state} ${shopInfo.full_address.zip}`;
+  const residentsToDisplay = residents.map((resident: Resident, index: number) => {
+    let className = `resident-container-${index + 1}`;
+
+    return (
+      <div key={resident._id} className={styles[className]}>
+        <p className={styles['resident-item']}><strong>{resident.name}</strong></p>
+        <p className={styles['resident-item']}>{resident.title}</p>
+        <p className={styles['resident-item']}>{resident.contact}</p>
+      </div>
+    );
+  });
 
   return (
     <main className={styles['main-container']}>
@@ -21,7 +47,7 @@ export default function Information() {
           <p className={styles['info-text']}>{ethos}</p>
         </div>
       </div>
-      <div className={styles['images-container']}>
+      <div className={styles['images-residents-container']}>
         <div className={styles['map-container']}>
           <Image
             src={`/images/map.png`}
@@ -49,6 +75,10 @@ export default function Information() {
             className={styles['backdrop-image']}
           />
         </div>
+        <div className={styles['residents-container']}>
+          <p className={styles['residents-title']}>RESIDENTS</p>
+        </div>
+        {residentsToDisplay}
       </div>
     </main>
   );

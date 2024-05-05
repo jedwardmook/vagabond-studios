@@ -28,10 +28,10 @@
   margin: 0;
 }
 
-.images-container {
+.images-residents-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(0px, 180px));
-  grid-template-rows: repeat(auto-fit, minmax(121px, 121px));
+  grid-template-columns: minmax(216px, 1fr) minmax(216px, 1fr) minmax(216px, 1fr) minmax(216px, 1fr) 15px 15px minmax(216px, 1fr) minmax(216px, 1fr) minmax(216px, 1fr) minmax(216px, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(121px, 121px));
 }
 
 .map-container {
@@ -46,6 +46,7 @@
 
 .floor-plan-container {
   grid-column: 3;
+  margin-left: -85px;
 }
 
 .floor-plan-image {
@@ -63,4 +64,27 @@
 .backdrop-image {
   width: 38rem;
   height: auto;
+}
+
+.residents-container {
+  grid-column: 7;
+  align-self: center;
+}
+
+.residents-title {
+  grid-row: 1 / 2;
+}
+
+.resident-item {
+  margin: 0;
+}
+
+.resident-container-1 {
+  grid-column: 7;
+  grid-row: 2;
+}
+
+.resident-container-2 {
+  grid-column: 8;
+  grid-row: 2;
 }

@@ -18,6 +18,11 @@ export default function Nav() {
 					<p className={styles.heading}>VAGABOND STUDIOS · BEAUTIFUL CONCRETE DAYLIGHT WITH LARGE WINDOWS IN THE HEART OF LONG ISLAND CITY</p>
 					<ul className={styles['nav-link-list']}>
 						{links.map((link) => {
+							if (link === 'booking') {
+								return (
+								<a key={link} href={'https://www.peerspace.com/pages/listings/64652dce7672b6000e6defbe'} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
+								);
+							}
 							return (
 								<a key={link} href={link.replace(' ', '-')} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
 							);

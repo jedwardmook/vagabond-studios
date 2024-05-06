@@ -60,6 +60,16 @@ export default function Footer () {
 			</div>
 			<div className={styles['footer-links-container']}>
 				{links.map((link) => {
+					if (link === 'booking') {
+						return (
+							<Link
+								key={link}
+								href={'https://www.peerspace.com/pages/listings/64652dce7672b6000e6defbe'}
+								className={styles['footer-link']}
+							>{link.toUpperCase()}
+							</Link>
+						);
+					}
 					return (
 						<Link
 							key={link}

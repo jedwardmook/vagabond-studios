@@ -9,7 +9,6 @@ export default function Nav() {
 	const [expanded, setExpanded] = useState(false);
 	const isAdminRoute = useIsAdminRoute();
 
-
 	return (
 		!isAdminRoute &&
 		<div className={`${styles.open} ${expanded ? styles.expanded : ''}`}>

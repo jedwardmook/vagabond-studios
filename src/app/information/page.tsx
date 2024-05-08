@@ -1,7 +1,7 @@
 import styles from './information.module.css';
 import { shopInfo, ethos } from '@/api/data';
 import Image from 'next/image';
-import { getResidents } from '../../../sanity/sanity-utils';
+import { getEquipment, getResidents } from '../../../sanity/sanity-utils';
 
 type Resident = {
   _id: string,
@@ -10,13 +10,26 @@ type Resident = {
   contact: string,
 }
 
+type Equipment = {
+  _id: string,
+  equipment: string,
+  description: string,
+}
+
 export default async function Information() {
   let residents = [];
+  let equipment = [];
 
   try {
     residents = await getResidents();
     } catch (error) {
     console.error('Error:', error);
+  }
+
+  try {
+    equipment = await getEquipment();
+  } catch (error) {
+    console.error('Error', error);
   }
 
   const fullAddress = `${shopInfo.full_address.city}, ${shopInfo.full_address.state} ${shopInfo.full_address.zip}`;
@@ -79,6 +92,18 @@ export default async function Information() {
           <p className={styles['residents-title']}>RESIDENTS</p>
         </div>
         {residentsToDisplay}
+        <div className={styles['equipment-container']}>
+          <p className={styles['equipment-title']}>Equipment</p>
+          <div className={styles['equipment-list']}>
+            {equipment.map((piece: Equipment) => {
+              return (
+                <>
+                  <p key={piece._id} className={styles['equipment-item']}>{piece.equipment}</p>
+                </>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </main>
   );

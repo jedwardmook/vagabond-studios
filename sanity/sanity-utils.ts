@@ -42,3 +42,20 @@ export async function getResidents() {
 		}`
 	);
 }
+
+export async function getEquipment() {
+	const client = createClient({
+		projectId,
+		dataset,
+		apiVersion,
+	});
+
+	return client.fetch(
+		groq`*[_type == 'equipment']{
+			_id,
+			_createdAt,
+			equipment,
+			description,
+		}`
+	);
+}

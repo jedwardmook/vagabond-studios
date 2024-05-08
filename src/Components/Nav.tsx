@@ -4,10 +4,19 @@ import Image from "next/image";
 import styles from "./nav.module.css";
 import { links } from "@/api/data";
 import useIsAdminRoute from "../app/utils/routeUtils";
+import { useRouter } from "next/navigation";
+
 
 export default function Nav() {
 	const [expanded, setExpanded] = useState(false);
 	const isAdminRoute = useIsAdminRoute();
+  const router = useRouter();
+
+  const handleLinkClick = (link: string) => {
+      const path = link.replace(" ", "-");
+      router.replace(`/${path}`);
+      setExpanded(!expanded);
+  };
 
 	return (
 		!isAdminRoute &&
@@ -19,11 +28,11 @@ export default function Nav() {
 						{links.map((link) => {
 							if (link === 'booking') {
 								return (
-								<a key={link} href={'https://www.peerspace.com/pages/listings/64652dce7672b6000e6defbe'} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
+                 <a key={link} href={'https://www.peerspace.com/pages/listings/64652dce7672b6000e6defbe'} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
 								);
 							}
 							return (
-								<a key={link} href={link.replace(' ', '-')} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
+								<a key={link} href='#' onClick={(e) => {e.preventDefault(); handleLinkClick(link);}} className={styles['nav-link']}><li className={styles['link-list']}>{link.toUpperCase()}</li></a>
 							);
 						})}
 					</ul>

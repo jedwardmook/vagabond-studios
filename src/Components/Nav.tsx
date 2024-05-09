@@ -5,7 +5,9 @@ import styles from "./nav.module.css";
 import { links } from "@/api/data";
 import useIsAdminRoute from "../app/utils/routeUtils";
 import { useRouter } from "next/navigation";
-
+import close from '../../public/close.svg';
+import vs from '../../public/vs.svg';
+import menu from '../../public/menu.svg';
 
 export default function Nav() {
 	const [expanded, setExpanded] = useState(false);
@@ -52,7 +54,7 @@ export default function Nav() {
 				<div className={styles['close-container']}>
 					<button className={styles['close-button']} onClick={() => setExpanded(!expanded)}>
 						<Image
-							src={`close.svg`}
+							src={close}
 							alt="close"
 							width={0}
 							height={0}
@@ -60,7 +62,7 @@ export default function Nav() {
 						/>
 					</button>
 					<Image
-						src={`vs.svg`}
+						src={vs}
 						alt="Vagabond Studios"
 						width={25}
 						height={60}
@@ -71,7 +73,7 @@ export default function Nav() {
 				<div className={styles['open-container']}>
 					<button className={styles['close-button']} onClick={() => setExpanded(!expanded)}>
 						<Image
-							src={`menu.svg`}
+							src={menu}
 							alt="menu"
 							width={0}
 							height={0}
@@ -80,7 +82,7 @@ export default function Nav() {
 					</button>
           <a href="/">
 					  <Image
-						  src={`vs.svg`}
+						  src={vs}
 						  alt="Vagabond Studios"
 						  width={25}
 						  height={60}

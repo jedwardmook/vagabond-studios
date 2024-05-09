@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./header.module.css";
 import useIsAdminRoute from "../app/utils/routeUtils";
+import wordmark from '../../public/WORDMARK_BLACK.svg';
 
 export default function Header() {
 	const isAdminRoute = useIsAdminRoute();
@@ -11,7 +12,7 @@ export default function Header() {
 		<div className={styles.main}>
 			<a href="/">
 				<Image
-					src={`WORDMARK_BLACK.svg`}
+					src={wordmark}
 					alt="Vagabond Studios"
 					width={0}
 					height={0}

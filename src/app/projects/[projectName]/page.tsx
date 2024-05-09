@@ -68,7 +68,7 @@ export default function Project() {
 	const projectsImages = project?.images?.map((image, index) => {
     let className = `project-image-${index + 1}`;
 
-		return (
+	  return (
 				<Image
 				  src={image.url}
 				  alt="Image"

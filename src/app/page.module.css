@@ -1,6 +1,6 @@
 .main {
   z-index: 1;
-  margin-bottom: 1000px;
+  margin-bottom: 1200px;
   margin-left: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 130px) 15px 15px repeat(4, 130px);

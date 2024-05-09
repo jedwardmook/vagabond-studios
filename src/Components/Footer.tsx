@@ -6,6 +6,7 @@ import { links } from '@/api/data';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import useIsAdminRoute from "../app/utils/routeUtils";
+import wordmark from '../../public/WORDMARK_BLACK.svg';
 
 export default function Footer () {
 	const [isAtBottom, setIsAtBottom] = useState(false);
@@ -22,7 +23,6 @@ export default function Footer () {
 
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
-
 
 	return (
 		!isAdminRoute &&
@@ -51,7 +51,7 @@ export default function Footer () {
 			</div>
 			<div className={styles['footer-logo-container']}>
 				<Image
-					src={`WORDMARK_BLACK.svg`}
+					src={wordmark}
 					alt="Vagabond Studios"
 					width={225}
 					height={100}

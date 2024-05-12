@@ -4,7 +4,8 @@ import { createClient, groq } from 'next-sanity';
 import { projectId, dataset, apiVersion } from '../../../sanity/env';
 
 type Image = {
-  url: string
+  url: string,
+  isLandscape: boolean,
 };
 
 type Project = {

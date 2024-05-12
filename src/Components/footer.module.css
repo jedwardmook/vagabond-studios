@@ -3,7 +3,7 @@
   position: fixed;
 	left: 0;
 	bottom: 0;
-  margin-bottom: 18rem;
+  margin-bottom: 11rem;
 	width: 100vw;
   margin-left: 6vw;
 	filter: blur(8px);
@@ -12,6 +12,9 @@
   transition: filter 0.3s;
   transform: opacity 0.8s;
 	z-index: -1;
+	@media (width > 1440px) {
+		margin-bottom: 18rem;
+	}
 }
 
 .unblurred {

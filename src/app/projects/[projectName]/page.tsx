@@ -8,6 +8,7 @@ import Image from "next/image";
 
 type Image = {
 	url: string,
+	isLandscape: boolean,
 }
 
 type Project = {
@@ -45,7 +46,8 @@ export default function Project() {
 			  year,
 			  mediums,
 			  images[] {
-				"url": asset->url
+				"url": asset->url,
+				isLandscape
 			  },
 			  description,
         "prevProject": *[_type == "project" && _createdAt < ^._createdAt] | order(_createdAt desc) [0] {
@@ -66,7 +68,12 @@ export default function Project() {
 	}, [projectToSearch]);
 
 	const projectsImages = project?.images?.map((image, index) => {
-    let className = `project-image-${index + 1}`;
+		let className = '';
+		if (image.isLandscape === true) {
+			className = `project-landscape-image-${index + 1}`;
+		} else {
+      className = `project-image-${index + 1}`;
+		}
 
 	  return (
 				<Image

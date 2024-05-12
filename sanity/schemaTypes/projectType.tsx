@@ -35,7 +35,15 @@ export const projectType = defineType({
 			type: 'array',
 			of: [
 				{
-					type: 'image'
+					type: 'image',
+					fields: [
+						{
+							name: 'isLandscape',
+							title: 'Is Landscape',
+							type: 'boolean',
+							initialValue: false,
+						}
+					]
 				}
 			]
 		})

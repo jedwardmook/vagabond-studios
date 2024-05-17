@@ -3,9 +3,8 @@
   position: fixed;
 	left: 0;
 	bottom: 0;
-  margin-bottom: 11rem;
+  margin: 0 0 11rem 6vw;
 	width: 100vw;
-  margin-left: 6vw;
 	filter: blur(8px);
   -webkit-filter: blur(8px);
   opacity: .2;
@@ -28,7 +27,7 @@
 	left: 0;
 	bottom: 0;
 	width: 100vw;
-  margin-left: 6vw;
+  margin: 11rem 0 0 6vw;
 	z-index: 1;
 }
 

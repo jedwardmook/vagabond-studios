@@ -67,7 +67,14 @@ export default function Project() {
 		fetchProject();
 	}, [projectToSearch]);
 
-	const projectsImages = project?.images?.map((image, index) => {
+	const sortedImages = project?.images?.sort((a, b) => {
+		if (a.isLandscape === b.isLandscape) {
+			return 0;
+		}
+		return a.isLandscape === true ? -1 : 1;
+	});
+
+	const projectsImages = sortedImages?.map((image, index) => {
 		let className = '';
 		if (image.isLandscape === true) {
 			className = `project-landscape-image-${index + 1}`;

@@ -5,7 +5,6 @@ import { projectId, dataset, apiVersion } from "../../../../sanity/env";
 import { createClient, groq } from "next-sanity";
 import styles from './project.module.css';
 import Image from "next/image";
-import InfoImageContainer from "@/Components/InfoImageContainer";
 
 type Image = {
 	url: string,
